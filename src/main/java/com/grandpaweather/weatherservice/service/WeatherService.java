@@ -8,9 +8,7 @@ import java.util.List;
 
 public interface WeatherService {
 
-    WeatherTriggerDTO getWeatherForCurrentDayByRequest(WeatherRequest request);
-
-    List<WeatherTriggerDTO> getWeatherDataForFewDaysByRequest(WeatherRequest request);
+    List<WeatherTriggerDTO> getWeatherForCurrentDayByRequest(WeatherRequest request);
 
     ForecastResponse getForecastResponseByRequest(WeatherRequest request);
 }

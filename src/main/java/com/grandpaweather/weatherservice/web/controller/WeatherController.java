@@ -28,13 +28,8 @@ public class WeatherController {
 
 
     @PostMapping("/weather")
-    public ResponseEntity<WeatherTriggerDTO> getWeatherForCurrentDayByRequest(@RequestBody @Valid WeatherRequest request) {
+    public ResponseEntity<List<WeatherTriggerDTO>> updateTriggersAccordingRequest(@RequestBody WeatherRequest request) {
         return ResponseEntity.ok().body(weatherService.getWeatherForCurrentDayByRequest(request));
-    }
-
-    @PostMapping("/weathers")
-    public ResponseEntity<List<WeatherTriggerDTO>> getWeatherForFewDaysByRequest(@RequestBody @Valid WeatherRequest request) {
-        return ResponseEntity.ok().body(weatherService.getWeatherDataForFewDaysByRequest(request));
     }
 
 

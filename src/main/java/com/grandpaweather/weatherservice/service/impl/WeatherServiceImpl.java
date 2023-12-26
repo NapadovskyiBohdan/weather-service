@@ -39,17 +39,11 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    public WeatherTriggerDTO getWeatherForCurrentDayByRequest(WeatherRequest request) {
+    public List<WeatherTriggerDTO> getWeatherForCurrentDayByRequest(WeatherRequest request) {
         List<WeatherTriggerRelation> relations = calculateTriggerWeatherByRequest(request);
-        return relations.stream().min(Comparator.comparing(WeatherTriggerRelation::getDate))
-                .map(WeatherTriggerDTO::buildDTOFromEntity)
-                .orElseThrow();
-    }
-
-    @Override
-    public List<WeatherTriggerDTO> getWeatherDataForFewDaysByRequest(WeatherRequest request) {
-        return calculateTriggerWeatherByRequest(request)
-                .stream().map(WeatherTriggerDTO::buildDTOFromEntity).collect(Collectors.toList());
+        return relations.stream().map(WeatherTriggerDTO::buildDTOFromEntity)
+                .sorted(Comparator.comparing(WeatherTriggerDTO::getDate))
+                .collect(Collectors.toList());
     }
 
 

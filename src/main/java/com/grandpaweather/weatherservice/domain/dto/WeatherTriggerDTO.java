@@ -1,12 +1,11 @@
 package com.grandpaweather.weatherservice.domain.dto;
 
-import com.grandpaweather.weatherservice.domain.Trigger;
 import com.grandpaweather.weatherservice.domain.WeatherTriggerRelation;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Builder

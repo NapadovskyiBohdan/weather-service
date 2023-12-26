@@ -34,12 +34,11 @@ public class WeatherData implements Serializable {
 
     public static List<WeatherData> createListOfWeatherData(ForecastResponse response) {
         List<WeatherResponse> responseList = response.getList();
-        return responseList.stream()
+        return   responseList.stream()
                 .filter(w -> dateIsStartOfDate(w.getDt(), responseList.indexOf(w)))
                 .map(w -> createWeatherData(response, w))
-                .sorted(Comparator.comparing(WeatherData::getDate).reversed())
+                .sorted(Comparator.comparing(WeatherData::getDate))
                 .collect(Collectors.toList());
-
     }
 
 
