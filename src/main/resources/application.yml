@@ -1,0 +1,22 @@
+#spring.config.import=optional:configserver:http://localhost:8888
+#server.port=8085
+server:
+  port: 8085
+
+spring:
+  cloud:
+    config:
+      import: "optional:configserver:http://localhost:8888"
+      enabled: false
+  data:
+    mongodb:
+      uri: mongodb://root:rootpassword@localhost:27017/
+      database: weather
+
+mongock:
+  migration-scan-package: com.grandpaweather.weatherservice.config.dbmigrations
+
+openweather:
+  api:
+    url: "https://api.openweathermap.org/data/2.5"
+    key: "2513d8cb6ed7db4a45c83c75859642f6"
